@@ -1,0 +1,10 @@
+<template name="MySchedule">
+	{{#if Template.subscriptionsReady}}
+		<div>
+			<input class="WakeTime" value="{{WakeTime}}">
+			<input class="SleepTime" value="{{SleepTime}}">
+		</div>
+	{{else}}
+		<p>Loading...</p>
+	{{/if}}
+</template>

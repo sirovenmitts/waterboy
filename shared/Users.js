@@ -1,0 +1,1 @@
+global.Users = Meteor.users
