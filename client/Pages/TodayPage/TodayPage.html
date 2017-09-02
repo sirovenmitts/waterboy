@@ -1,3 +1,7 @@
 <template name="TodayPage">
-	<h1>Today</h1>
+	{{#if Template.subscriptionsReady}}
+		{{> RecordDetails record=record}}
+	{{else}}
+		Loading...
+	{{/if}}
 </template>

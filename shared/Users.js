@@ -32,5 +32,28 @@ Users.helpers({
 				'AlarmLabels': labels
 			}
 		})
+
+		const rQuery = {owner: this._id, forDay: today()}
+		Records.ensureExistence(rQuery)
+		const record = Records.findOne({
+			owner: this._id,
+			forDay: {
+				$gte: today(),
+				$lt: tomorrow()
+			}
+		})
+
+		const values = []
+		for(let i = 0; i < alarms.length; i++) {
+			values.push(false)
+		}
+
+		Records.update(rQuery, {
+			$set: {
+				'Alarms': alarms,
+				'AlarmLabels': labels,
+				'AlarmValues': values
+			}
+		})
 	}
 })

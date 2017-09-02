@@ -1,0 +1,10 @@
+<template name="EntryToggle">
+	<div class="EntryToggle">
+		<label for="Entry-{{entry.id}}">{{entry.label}}</label>
+		<input
+			id="Entry-{{entry.id}}"
+			class="Trigger"
+			type="checkbox"
+			checked="{{#if entry.value}}checked{{/if}}">
+	</div>
+</template>
