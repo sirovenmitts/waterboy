@@ -1,3 +1,54 @@
+<template name="Calendar">
+	<div class="Calendar">
+		<h2>{{calendar.month}} {{calendar.year}}</h2>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr class="cal-day-names">
+					{{#each day in days}}
+						<td class="col-xs-7">{{day}}</td>
+					{{/each}}
+				</tr>
+			</thead>
+			<tbody>
+				{{#each week in calendar.weeks}}
+					<tr class="week">
+						{{#each day in week}}
+							<td class="col-xs-7">
+								{{{dayOf day.date}}}
+							</td>
+						{{/each}}
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+</template>
+
 <template name="HistoryPage">
-	<h1>History</h1>
+	{{#if Template.subscriptionsReady}}
+		<h1>History</h1>
+
+		{{> Calendar calendar=cal}}
+
+		<div class="clusterize">
+			<table>
+				<thead>
+					<tr>
+						<th>Headers</th>
+					</tr>
+				</thead>
+			</table>
+			<div class="ScrollArea clusterize-scroll">
+				<table>
+					<tbody class="ContentArea clusterize-content">
+						<tr class="clusterize-no-data">
+							<td>Loading...</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	{{else}}
+		Loading...
+	{{/if}}
 </template>

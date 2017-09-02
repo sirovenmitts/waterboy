@@ -1,3 +1,7 @@
+global.whoops = function(type) {
+	throw new Meteor.Error(type)
+}
+
 global.formatn = n => (n).toLocaleString('en-US', {useGrouping: false, minimumIntegerDigits: 2})
 
 global.today = () => {
@@ -26,3 +30,5 @@ global.zipWith = (fn, ...lists) =>
 		.reduce((m, l) => l.length > m.length ? l : m, [])
 		// Iterate over it, passing the item at i for each list to fn
 		.map((_, i) => fn(lists.map(list => list[i])))
+
+global.modulo = (i, max) => ((i % max) + max) % max

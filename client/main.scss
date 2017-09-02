@@ -1,2 +1,5 @@
 @import '{deps:bootstrap3}/bootstrap';
-//@import '{deps:datepicker}/bootstrap-datetimepicker';
+
+.Calendar table {
+  table-layout: fixed;
+}
