@@ -5,7 +5,7 @@
 			<thead>
 				<tr class="cal-day-names">
 					{{#each day in days}}
-						<td class="col-xs-7">{{day}}</td>
+						<td>{{day}}</td>
 					{{/each}}
 				</tr>
 			</thead>
@@ -13,7 +13,7 @@
 				{{#each week in calendar.weeks}}
 					<tr class="week">
 						{{#each day in week}}
-							<td class="col-xs-7">
+							<td>
 								{{{dayOf day.date}}}
 							</td>
 						{{/each}}

@@ -1,5 +1,9 @@
-@import '{deps:bootstrap3}/bootstrap';
+.Calendar {
+  table {
+    table-layout: fixed;
 
-.Calendar table {
-  table-layout: fixed;
+    td {
+      width: calc(100% / 7);
+    }
+  }
 }
