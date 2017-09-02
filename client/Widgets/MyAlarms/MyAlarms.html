@@ -2,14 +2,16 @@
 	{{#if Template.subscriptionsReady}}
 		{{#if hasAlarms}}
 			<h6>You'll be notified to drink water at...</h6>
-			<table class="table table-bordered">
-				{{#each label in AlarmLabels}}
-					<tr>
-						<td>
-							{{label}}
-						</td>
-					</tr>
-				{{/each}}
+			<table class="table table-bordered table-striped">
+				<tbody>
+					{{#each label in AlarmLabels}}
+						<tr>
+							<td>
+								{{label}}
+							</td>
+						</tr>
+					{{/each}}
+				</tbody>
 			</table>
 		{{/if}}
 	{{else}}

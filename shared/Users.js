@@ -5,11 +5,10 @@ Users.helpers({
 		const me = {_id: this._id}
 
 		Users.update(me, {$set: {'Alarms': [], 'AlarmLabels': []}})
-		const WakeTime = TimeOfDay.create(this.WakeTime)
-		const SleepTime = TimeOfDay.create(this.SleepTime)
-		if (SleepTime <= WakeTime) return
 
-		const duration = SleepTime - WakeTime
+		const WakeTime = TimeOfDay.create(this.WakeTime)
+		const duration = TimeOfDay.duration(WakeTime, this.SleepTime)
+		if (!duration) return
 		if (duration < 60) return
 
 		const alarms = []
