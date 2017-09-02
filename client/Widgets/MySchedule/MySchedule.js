@@ -1,13 +1,6 @@
-const update = _.debounce((field, value) => {
-	const userId = Meteor.userId()
-	if (!userId) return
-
-	Users.update({_id: userId}, {
-		$set: {
-			[field]: value
-		}
-	})
-}, 500)
+const update = field => _.debounce(e => {
+	MySchedule[field](e.target.value)
+}, 100)
 
 Template.MySchedule.onCreated(function () {
 	this.subscribe('MySchedule')
@@ -40,11 +33,12 @@ Template.MySchedule.onRendered(function () {
 })
 
 Template.MySchedule.events({
-	'input .WakeTime, change .WakeTime': e => update('WakeTime', e.target.value),
-	'input .SleepTime, change .SleepTime': e => update('SleepTime', e.target.value)
+	'input .WakeTime, change .WakeTime': update('WakeTime'),
+	'input .SleepTime, change .SleepTime': update('SleepTime')
 })
 
 Template.MySchedule.helpers({
-	WakeTime: () => Meteor.user().WakeTime,
-	SleepTime: () => Meteor.user().SleepTime
+	WakeTime: () => MySchedule.WakeTime(),
+	SleepTime: () => MySchedule.SleepTime()
 })
+
