@@ -1,0 +1,19 @@
+<template name="Waterboy">
+	<div class="container">
+		<header>
+			<ul class="nav nav-tabs">
+				{{#each tab in tabs}}
+					<li role="presentation" class="{{tab.id}} {{#if (isActive tab.id)}}active{{/if}}">
+						<a href="#" data-tab="{{tab.id}}">
+							{{tab.label}}
+						</a>
+					</li>
+				{{/each}}
+			</ul>
+		</header>
+
+		<section>
+			{{> Template.dynamic template=tmpl}}
+		</section>
+	</div>
+</template>

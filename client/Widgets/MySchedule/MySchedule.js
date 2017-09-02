@@ -12,7 +12,10 @@ Template.MySchedule.onRendered(function () {
 			this.$(selector).clockpicker({
 				...cpOptions,
 				twelvehour: true,
-				autoclose: true
+				// autoclose: true,
+				minutestep: 5,
+				placement: 'bottom-adaptive',
+				donetext: 'OK'
 			})
 		})
 	}
@@ -20,21 +23,19 @@ Template.MySchedule.onRendered(function () {
 	this.autorun(() => {
 		if (!this.subscriptionsReady()) return
 
-		ClockPicker('.WakeTime', {
-			align: 'left',
+		ClockPicker('#WakeTime', {
 			default: Meteor.user().WakeTime
 		})
 
-		ClockPicker('.SleepTime', {
-			align: 'right',
+		ClockPicker('#SleepTime', {
 			default: Meteor.user().SleepTime
 		})
 	})
 })
 
 Template.MySchedule.events({
-	'input .WakeTime, change .WakeTime': update('WakeTime'),
-	'input .SleepTime, change .SleepTime': update('SleepTime')
+	'input #WakeTime, change #WakeTime': update('WakeTime'),
+	'input #SleepTime, change #SleepTime': update('SleepTime')
 })
 
 Template.MySchedule.helpers({

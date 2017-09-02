@@ -1,9 +1,16 @@
 <template name="MySchedule">
 	{{#if Template.subscriptionsReady}}
-		<div>
-			<input class="WakeTime" value="{{WakeTime}}">
-			<input class="SleepTime" value="{{SleepTime}}">
-		</div>
+		<form class="form">
+			<div class="form-group">
+				<label for="WakeTime">I wake up around...</label>
+				<input id="WakeTime" class="form-control" value="{{WakeTime}}">
+			</div>
+
+			<div class="form-group">
+				<label for="SleepTime">I go to sleep around...</label>
+				<input id="SleepTime" class="form-control" value="{{SleepTime}}">
+			</div>
+		</form>
 	{{else}}
 		<p>Loading...</p>
 	{{/if}}
