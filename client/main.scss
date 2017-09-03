@@ -1,9 +1,69 @@
+@font-face {
+  font-family: '3dventure';
+  src: url('3dventure.woff2') format('woff2'),
+  url('3dventure.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1 {
+  font-family: "3dventure";
+}
+
+.Waterboy {
+  height: 100vh;
+  overflow: hidden;
+
+  .MainNav {
+    padding: 10px;
+  }
+
+  .ScrollArea {
+    overflow: auto;
+    max-height: none;
+  }
+
+  .MyAlarms {
+    display: table;
+  }
+
+  .EntryToggle {
+    .TogglerIcon {
+      pointer-events: none;
+    }
+
+    .Trigger {
+      display: none;
+    }
+  }
+}
+
 .Calendar {
   table {
     table-layout: fixed;
 
     td {
       width: calc(100% / 7);
+
+      $fill-color: rgba(186, 225, 255, 0.25);
+      $step: (100 / 8);
+      @for $i from 1 through 8 {
+        &.Cell-#{$i} {
+          $pos: $step * $i * 1%;
+          background: linear-gradient(0deg, $fill-color, $fill-color $pos, transparent $pos);
+        }
+      }
     }
   }
+}
+
+.popover {
+  font-family: Pixl;
+  top: 0;
+  left: 0;
+}
+
+.popover-title {
+  background-color: transparent !important;
+  border-bottom: none !important;
 }

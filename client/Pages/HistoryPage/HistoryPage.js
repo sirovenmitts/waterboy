@@ -1,6 +1,8 @@
 Template.Calendar.helpers({
 	days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-	dayOf: date => date ? date.getDate() : '&nbsp;'
+	dayOf: ({date}) => date.getDate(),
+	monthOf: calendar => calendar.month + 1,
+	cellClass: ({date}) => `Cell-${MyRecords.entriesFor(date)}`
 })
 
 
@@ -15,13 +17,22 @@ Template.HistoryPage.onRendered(function () {
 		Meteor.defer(() => {
 			const ScrollArea = this.$('.ScrollArea')[0]
 			const ContentArea = this.$('.ContentArea')[0]
-			const rows = ['<tr>One</tr>', '<tr>Two</tr>']
+
+			let cal = Calendar.current()
+			const rows = []
+			for (let i = 0; i < 4; i++) {
+				const row = Blaze.toHTMLWithData(Template.Calendar, {calendar: cal})
+				rows.push(row)
+				cal = cal.prev()
+			}
 
 			this.clusterize = new Clusterize({
 				rows,
 				scrollElem: ScrollArea,
 				contentElem: ContentArea
 			})
+
+			Waterboy.adjustScrollArea()
 		})
 	})
 })

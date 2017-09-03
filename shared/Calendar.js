@@ -8,7 +8,6 @@ const Calendar = global.Calendar = function (input) {
 	let month
 	let year
 	if (typeof input === 'object') {
-		console.log(input)
 		month = input.month
 		year = input.year
 	}

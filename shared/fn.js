@@ -1,11 +1,11 @@
-global.whoops = function(type) {
+global.whoops = function (type) {
 	throw new Meteor.Error(type)
 }
 
 global.formatn = n => (n).toLocaleString('en-US', {useGrouping: false, minimumIntegerDigits: 2})
 
-global.today = () => {
-	const d = new Date()
+global.beginningOfDay = date => {
+	const d = new Date(date)
 	const clear = fragment => d[`set${fragment}`](0)
 
 	clear('Hours')
@@ -16,13 +16,14 @@ global.today = () => {
 	return d
 }
 
-global.tomorrow = () => dayAfter(today())
-
 global.dayAfter = date => {
 	const d = new Date(date)
 	d.setDate(d.getDate() + 1)
-	return d
+	return beginningOfDay(d)
 }
+
+global.today = () => beginningOfDay(new Date())
+global.tomorrow = () => dayAfter(today())
 
 global.zipWith = (fn, ...lists) =>
 	lists
@@ -32,3 +33,12 @@ global.zipWith = (fn, ...lists) =>
 		.map((_, i) => fn(lists.map(list => list[i])))
 
 global.modulo = (i, max) => ((i % max) + max) % max
+
+
+global.formatDate = (template, date) => {
+	var specs = 'YYYY:MM:DD:HH:mm:ss'.split(':');
+	date = new Date(date || Date.now() - new Date().getTimezoneOffset() * 6e4);
+	return date.toISOString().split(/[-:.TZ]/).reduce(function (template, item, i) {
+		return template.split(specs[i]).join(item);
+	}, template);
+}

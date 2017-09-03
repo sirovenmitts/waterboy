@@ -68,8 +68,8 @@
 
     // Popover template
     var tpl = [
-        '<div class="popover clockpicker-popover">',
-        '<div class="arrow"></div>',
+        '<div class="popover clockpicker-popover mc-gui">',
+        // '<div class="arrow"></div>',
         '<div class="popover-title">',
         '<span class="clockpicker-span-hours text-primary"></span>',
         ' : ',
@@ -131,7 +131,7 @@
         // Setup for for 12 hour clock if option is selected
         if (options.twelvehour) {
 
-            $('<button type="button" class="btn btn-sm btn-default clockpicker-button am-button">' + "AM" + '</button>')
+            $('<button type="button" class="btn btn-sm btn-default clockpicker-button am-button mc-button">' + "AM" + '</button>')
                 .on("click", function () {
                     self.amOrPm = "AM";
                     $('.clockpicker-span-am-pm').empty().append('AM');
@@ -144,7 +144,7 @@
                 }).appendTo(this.amPmBlock);
 
 
-            $('<button type="button" class="btn btn-sm btn-default clockpicker-button pm-button">' + "PM" + '</button>')
+            $('<button type="button" class="btn btn-sm btn-default clockpicker-button pm-button mc-button">' + "PM" + '</button>')
                 .on("click", function () {
                     self.amOrPm = 'PM';
                     $('.clockpicker-span-am-pm').empty().append('PM');
@@ -160,7 +160,7 @@
 
         if (!options.autoclose) {
             // If autoclose is not setted, append a button
-            $('<button type="button" class="btn btn-sm btn-default btn-block clockpicker-button">' + options.donetext + '</button>')
+            $('<div style="padding: 12px;"><button type="button" class="btn btn-sm btn-default btn-block clockpicker-button mc-button">' + options.donetext + '</button></div>')
                 .click($.proxy(this.done, this))
                 .appendTo(popover);
         }
@@ -430,7 +430,7 @@
         hourstep: 1,		// allow to multi increment the hour
         minutestep: 1,		// allow to multi increment the minute
         ampmSubmit: false,	// allow submit with AM and PM buttons instead of the minute selection/picker
-        addonOnly: false	// only open on clicking on the input-addon
+        addonOnly: false   // only open on clicking on the input-addon
     };
 
     // Show or hide popover

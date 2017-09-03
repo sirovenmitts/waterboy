@@ -12,7 +12,6 @@ Template.MySchedule.onRendered(function () {
 			this.$(selector).clockpicker({
 				...cpOptions,
 				twelvehour: true,
-				// autoclose: true,
 				minutestep: 5,
 				placement: 'bottom-adaptive',
 				donetext: 'OK'

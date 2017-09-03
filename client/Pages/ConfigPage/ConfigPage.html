@@ -1,8 +1,14 @@
 <template name="ConfigPage">
-	<div class="panel">
-		<div class="panel-body">
+	<section class="ConfigPage">
+		<div class="ScrollArea container-fluid">
+			{{> PageHeader text="Config"}}
+
+				<button class="Pushy btn mc-button">
+					Enable push notifications
+				</button>
+
 			{{> MySchedule}}
 			{{> MyAlarms}}
 		</div>
-	</div>
+	</section>
 </template>

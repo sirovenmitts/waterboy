@@ -1,18 +1,18 @@
 <template name="Waterboy">
-	<div class="container">
-		<header>
-			<ul class="nav nav-tabs">
+	<div class="Waterboy mc-gui">
+		<nav class="MainNav navbar">
+			<ul class="nav nav-pills text-center">
 				{{#each tab in tabs}}
-					<li role="presentation" class="{{tab.id}} {{#if (isActive tab.id)}}active{{/if}}">
-						<a href="#" data-tab="{{tab.id}}">
+					<li role="presentation" class="{{tab.id}} {{#if (isActive tab.id)}}active{{/if}} mc-button">
+						<a data-tab="{{tab.id}}">
 							{{tab.label}}
 						</a>
 					</li>
 				{{/each}}
 			</ul>
-		</header>
+		</nav>
 
-		<section>
+		<section class="PageContainer">
 			{{> Template.dynamic template=tmpl}}
 		</section>
 	</div>

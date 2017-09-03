@@ -1,10 +1,15 @@
 <template name="EntryToggle">
-	<div class="EntryToggle">
-		<label for="Entry-{{entry.id}}">{{entry.label}}</label>
-		<input
-			id="Entry-{{entry.id}}"
-			class="Trigger"
-			type="checkbox"
-			checked="{{#if entry.value}}checked{{/if}}">
+	<div class="EntryToggle text-center" data-id="Entry-{{entry.id}}">
+		<label class="Toggler">
+			<div class="TogglerIcon mc-icon-xl">
+				<span class="mc-icon-bucket{{#unless entry.value}}-outline{{/unless}}"></span>
+			</div>
+			{{entry.label}}
+			<input
+				id="Entry-{{entry.id}}"
+				class="Trigger"
+				type="checkbox"
+				checked="{{#if entry.value}}checked{{/if}}">
+		</label>
 	</div>
 </template>

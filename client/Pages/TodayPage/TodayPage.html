@@ -1,6 +1,11 @@
 <template name="TodayPage">
 	{{#if Template.subscriptionsReady}}
-		{{> RecordDetails record=record}}
+		<div class="TodayPage">
+			<div class="ScrollArea">
+				{{> PageHeader text=label}}
+				{{> RecordDetails record=record}}
+			</div>
+		</div>
 	{{else}}
 		Loading...
 	{{/if}}

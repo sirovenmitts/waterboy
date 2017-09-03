@@ -1,6 +1,6 @@
 <template name="Calendar">
 	<div class="Calendar">
-		<h2>{{calendar.month}} {{calendar.year}}</h2>
+		<h2 class="text-center">{{monthOf calendar}} / {{calendar.year}}</h2>
 		<table class="table table-bordered table-striped">
 			<thead>
 				<tr class="cal-day-names">
@@ -13,9 +13,13 @@
 				{{#each week in calendar.weeks}}
 					<tr class="week">
 						{{#each day in week}}
-							<td>
-								{{{dayOf day.date}}}
-							</td>
+							{{#if day}}
+								<td class="{{cellClass day}}">
+									{{dayOf day}}
+								</td>
+							{{else}}
+								<td>&nbsp;</td>
+							{{/if}}
 						{{/each}}
 					</tr>
 				{{/each}}
@@ -26,26 +30,14 @@
 
 <template name="HistoryPage">
 	{{#if Template.subscriptionsReady}}
-		<h1>History</h1>
-
-		{{> Calendar calendar=cal}}
-
-		<div class="clusterize">
-			<table>
-				<thead>
-					<tr>
-						<th>Headers</th>
-					</tr>
-				</thead>
-			</table>
-			<div class="ScrollArea clusterize-scroll">
-				<table>
-					<tbody class="ContentArea clusterize-content">
-						<tr class="clusterize-no-data">
-							<td>Loading...</td>
-						</tr>
-					</tbody>
-				</table>
+		<div class="HistoryPage">
+			<div class="ScrollArea container-fluid clusterize-scroll">
+				{{> PageHeader text="History"}}
+				<div class="ContentArea clusterize-content">
+					<div class="clusterize-no-data">
+						<h1>Loading...</h1>
+					</div>
+				</div>
 			</div>
 		</div>
 	{{else}}
