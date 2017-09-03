@@ -3,12 +3,23 @@
 		<div class="ScrollArea container-fluid">
 			{{> PageHeader text="Config"}}
 
-				<button class="Pushy btn mc-button">
-					Enable push notifications
-				</button>
+			<div class="panel panel-default">
+				<div class="panel-heading">Integrations</div>
+				<div class="panel-body text-center">
+					<button class="Pushy btn mc-button">
+						Enable push notifications
+					</button>
+				</div>
+			</div>
 
-			{{> MySchedule}}
-			{{> MyAlarms}}
+			<div class="panel panel-default">
+				<div class="panel-heading">Scheduling</div>
+				<div class="panel-body">
+					{{> MySchedule}}
+					{{> MyAlarms}}
+				</div>
+			</div>
+
 		</div>
 	</section>
 </template>

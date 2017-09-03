@@ -13,4 +13,6 @@ Meteor.startup(() => {
 		.catch(error => console.log('ServiceWorker registration failed: ', err))
 })
 
-
+Template.atForm.onRendered(function() {
+	this.$('button').addClass('mc-button')
+})

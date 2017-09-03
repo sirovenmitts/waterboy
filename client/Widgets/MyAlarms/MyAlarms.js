@@ -1,8 +1,8 @@
-Template.MyAlarms.onCreated(function() {
-	this.subscribe('MyAlarms')
+Template.MyAlarms.onCreated(function () {
+	subsCache.subscribe('MyAlarms')
 })
 
 Template.MyAlarms.helpers({
 	hasAlarms: () => MyAlarms.anyExist(),
-	AlarmLabels: () => MyAlarms.asLabels()
+	alarms: () => MyAlarms.get()
 })

@@ -1,7 +1,6 @@
 // 1. Ensure MyAlarms exist when logging in
 Accounts.onLogin(() => {
 	ensure(Meteor.userId, 'Alarms', [])
-	ensure(Meteor.userId, 'AlarmLabels', [])
 })
 
 // 2. Publish MyAlarms
@@ -9,10 +8,7 @@ Meteor.publish('MyAlarms', function () {
 	if (!this.userId) return
 
 	return Users.find({_id: this.userId}, {
-		fields: {
-			Alarms: true,
-			AlarmLabels: true
-		}
+		fields: {Alarms: true}
 	})
 })
 

@@ -3,7 +3,7 @@ const update = field => _.debounce(e => {
 }, 100)
 
 Template.MySchedule.onCreated(function () {
-	this.subscribe('MySchedule')
+	subsCache.subscribe('MySchedule')
 })
 
 Template.MySchedule.onRendered(function () {
@@ -14,13 +14,16 @@ Template.MySchedule.onRendered(function () {
 				twelvehour: true,
 				minutestep: 5,
 				placement: 'bottom-adaptive',
-				donetext: 'OK'
+				donetext: 'OK',
+				align: 'top'
 			})
+
+			Waterboy.adjustScrollArea()
 		})
 	}
 
 	this.autorun(() => {
-		if (!this.subscriptionsReady()) return
+		if (!subsCache.ready()) return
 
 		ClockPicker('#WakeTime', {
 			default: Meteor.user().WakeTime

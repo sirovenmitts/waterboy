@@ -25,12 +25,13 @@ Meteor.methods({
 		const record = Records.findOne({_id: recordID, owner: this.userId})
 		if (!record) whoops('record-not-owned-by-you')
 
-		const idx = record.Alarms.indexOf(entryID)
+		const entry = record.Alarms.find(entry => entry.tod === entryID)
+		const idx = record.Alarms.indexOf(entry)
 		if (idx < 0) whoops('entry-does-not-exist')
 
 		Records.update({_id: recordID}, {
 			$set: {
-				[`AlarmValues.${idx}`]: value
+				[`Alarms.${idx}.value`]: value
 			}
 		})
 	}

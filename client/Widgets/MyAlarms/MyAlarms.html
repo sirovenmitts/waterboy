@@ -1,13 +1,13 @@
 <template name="MyAlarms">
-	{{#if Template.subscriptionsReady}}
+	{{#if subsReady}}
 		{{#if hasAlarms}}
 			<h6>You'll be notified to drink water at...</h6>
 			<table class="MyAlarms table table-bordered table-striped mc-slot">
 				<tbody>
-					{{#each label in AlarmLabels}}
+					{{#each alarm in alarms}}
 						<tr>
 							<td>
-								{{label}}
+								{{alarm.label}}
 							</td>
 						</tr>
 					{{/each}}

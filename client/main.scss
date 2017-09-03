@@ -1,69 +1,86 @@
 @font-face {
-  font-family: '3dventure';
-  src: url('3dventure.woff2') format('woff2'),
-  url('3dventure.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
+	font-family: '3dventure';
+	src: url('3dventure.woff2') format('woff2'),
+	url('3dventure.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
 }
 
 h1 {
-  font-family: "3dventure";
+	font-family: "3dventure";
 }
 
 .Waterboy {
-  height: 100vh;
-  overflow: hidden;
+	height: 100vh;
+	overflow: hidden;
 
-  .MainNav {
-    padding: 10px;
-  }
+	.MainNav {
+		padding: 0 10px;
+		margin-bottom: 0;
 
-  .ScrollArea {
-    overflow: auto;
-    max-height: none;
-  }
+		.nav-tabs > li.active > a {
+			color: #ffb3ba;
+		}
+	}
 
-  .MyAlarms {
-    display: table;
-  }
+	.ScrollArea {
+		overflow: auto;
+		max-height: none;
+	}
 
-  .EntryToggle {
-    .TogglerIcon {
-      pointer-events: none;
-    }
+	.MyAlarms {
+		display: table;
+	}
 
-    .Trigger {
-      display: none;
-    }
-  }
+	.EntryToggle {
+		.TogglerIcon {
+			pointer-events: none;
+		}
+
+		.Trigger {
+			display: none;
+		}
+	}
 }
 
 .Calendar {
-  table {
-    table-layout: fixed;
+	table {
+		table-layout: fixed;
 
-    td {
-      width: calc(100% / 7);
+		td {
+			width: calc(100% / 7);
 
-      $fill-color: rgba(186, 225, 255, 0.25);
-      $step: (100 / 8);
-      @for $i from 1 through 8 {
-        &.Cell-#{$i} {
-          $pos: $step * $i * 1%;
-          background: linear-gradient(0deg, $fill-color, $fill-color $pos, transparent $pos);
-        }
-      }
-    }
-  }
+			$fill-color: rgba(186, 225, 255, 1);
+			$step: (100 / 8);
+			@for $i from 1 through 8 {
+				&.Cell-#{$i} {
+					$pos: $step * $i * 1%;
+					background: linear-gradient(0deg, $fill-color, $fill-color $pos, transparent $pos);
+				}
+			}
+		}
+	}
 }
 
-.popover {
-  font-family: Pixl;
-  top: 0;
-  left: 0;
-}
+.ClockPicker {
+	position: absolute;
+	left: 0 !important;
+	right: 0;
+	top: 0 !important;
+	bottom: 0;
+	background-color: rgba(200, 200, 200, 0.25);
 
-.popover-title {
-  background-color: transparent !important;
-  border-bottom: none !important;
+	.popover {
+		display: block;
+		font-family: Pixl;
+		top: 10%;
+		left: 0;
+		right: 0;
+		margin: auto;
+	}
+
+	.popover-title {
+		background-color: transparent !important;
+		border-bottom: none !important;
+	}
 }

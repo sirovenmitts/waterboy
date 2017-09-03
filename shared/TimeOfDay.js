@@ -1,4 +1,4 @@
-const FORMAT = /(\d{2})\s*:\s*(\d{2})\s*(AM|PM)/i
+const FORMAT = /(\d{1,2})\s*:\s*(\d{2})\s*(AM|PM)/i
 const test = FORMAT.test.bind(FORMAT)
 const sum = (...n) => n.map(n => parseInt(n, 10)).filter(n => !isNaN(n)).reduce((m, n) => m + n, 0)
 const isAfternoon = half => /PM/i.test(half)

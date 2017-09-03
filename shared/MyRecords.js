@@ -19,7 +19,7 @@ const MyRecords = global.MyRecords = {
 		Meteor.call('MyRecords.update', {recordID, entryID, value})
 	},
 
-	entriesFor(day) {
+	entryCountFor(day) {
 		if (day) {
 			const userId = Meteor.userId()
 			if (userId) {
@@ -30,9 +30,10 @@ const MyRecords = global.MyRecords = {
 						$lt: dayAfter(day)
 					}
 				})
-				if (record) {
-					return record.AlarmValues.filter(v => v).length
-				}
+				if (record)
+					if (record.Alarms)
+						if (record.Alarms.length)
+							return record.Alarms.filter(entry => entry.value).length
 			}
 		}
 		return 0
