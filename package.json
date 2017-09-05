@@ -1,17 +1,16 @@
 {
   "name": "waterboy",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Waterboy will help remind you when it is time to drink some water",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tape test/*"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sirovenmitts/waterboy.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["CLI", "water"],
+  "author": "Kenneth Pullen <kenneth.pullen@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/sirovenmitts/waterboy/issues"

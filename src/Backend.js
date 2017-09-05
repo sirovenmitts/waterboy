@@ -52,7 +52,6 @@ module.exports = function (server, stream) {
 					return
 				}
 
-				message("I'm here, good buddy!")
 				cb(null, info())
 			} catch (err) {
 				cb(err)
