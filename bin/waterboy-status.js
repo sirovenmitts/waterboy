@@ -1,2 +1,4 @@
 #!/usr/bin/env node
-require('./Daemon').Frontend.then(d => d.status())
+const {command, connect} = require('../src')
+command('status')
+connect().then(d => d.status())

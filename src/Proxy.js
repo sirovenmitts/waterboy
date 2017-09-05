@@ -1,40 +1,35 @@
+const logSymbols = require('log-symbols')
+
+const ok = msg => console.log(logSymbols.success, msg)
+const error = msg => console.error(logSymbols.error, msg)
+const printInfo = info => console.log(JSON.stringify(info, null, 2))
+
 module.exports = function (remote, connection) {
 	return {
-		start() {
-			remote.start((err) => {
-
-				if (err) {
-					console.error(err)
-				}
-
-				connection.destroy()
-				process.exit(0)
-			})
-		},
-
+		start: () => call('start').then(close),
 		stop: remote.stop.bind(remote),
-		status() {
-			remote.status((err) => {
-				if (err) {
-					console.error(err)
-				}
+		status: () => call('status').then(printInfo).then(close),
+		updateConfiguration: () => call('updateConfiguration').then(() => ok('Configuration updated')).then(close)
+	}
 
-				connection.destroy()
-				process.exit(0)
-			})
-		},
+	/* private methods */
 
-		updateConfiguration() {
-			remote.updateConfiguration((err, info = {}) => {
+	function call(method) {
+		return new Promise(resolve => {
+			remote[method](function (err) {
 				if (err) {
-					console.error('ERROR', err)
+					error(err)
+					close()
 				} else {
-					console.log(JSON.stringify(info, null, 2))
+					const extra = Array.prototype.splice.call(arguments, 1)
+					resolve.apply(resolve, extra)
 				}
-
-				connection.destroy()
-				process.exit(0)
 			})
-		}
+		})
+	}
+
+	function close() {
+		connection.destroy()
+		process.exit(0)
 	}
 }

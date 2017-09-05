@@ -1,4 +1,4 @@
-#!/usr/bin/env node --expose-internals
+#!/usr/bin/env node
 process.title = 'Waterboy daemon'
 
 const rc = require('rc')
@@ -18,6 +18,7 @@ const info = () => {
 		WakeTime,
 		SleepTime,
 		DrinkCount,
+		running,
 		schedule: alarms.map(({at}) => at.asString)
 	}
 }
@@ -47,7 +48,7 @@ module.exports = function (server, stream) {
 		status(cb) {
 			try {
 				if (!running) {
-					cb('Waterboy is taking a rest. Try `waterboy start`.', [])
+					cb('Waterboy is taking a rest. Try `waterboy start`.')
 					return
 				}
 
@@ -61,7 +62,7 @@ module.exports = function (server, stream) {
 		updateConfiguration(cb) {
 			cancelScheduledAlarms()
 			scheduleAlarms()
-			cb(null, info())
+			cb(null)
 		}
 	}
 }

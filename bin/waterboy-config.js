@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 process.title = 'Waterboy CLI'
 
-const {Command, connect, fn: {today, tomorrow}, TimeOfDay} = require('../src')
+const {command, connect, fn: {today, tomorrow}, TimeOfDay} = require('../src')
 
-Command('config')
+command('config')
 
 const inquirer = require('inquirer')
 const rc = require('rc')

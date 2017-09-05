@@ -1,5 +1,5 @@
 exports.TimeOfDay = require('./TimeOfDay')
-exports.Command = require('./Command')
+exports.command = require('./command')
 
 exports.fn = require('./fn')
 exports.connect = require('./connect')

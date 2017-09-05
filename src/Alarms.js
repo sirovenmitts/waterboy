@@ -3,7 +3,6 @@ const DRINKS_PER_DAY = 8
 
 module.exports = {
 	between(_start, _end, count = DRINKS_PER_DAY) {
-		console.log(_start, _end, count)
 		const start = TimeOfDay.create(_start)
 		const duration = TimeOfDay.duration(start, _end)
 
