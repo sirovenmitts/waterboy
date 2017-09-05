@@ -1,0 +1,14 @@
+{
+  "start": {
+    "description": "Get that waterboy working!"
+  },
+  "stop": {
+    "description": "Tell your waterboy to hang it up"
+  },
+  "status": {
+    "description": "Check the status of your waterboy"
+  },
+  "config": {
+    "description": "Give your waterboy some deets"
+  }
+}
