@@ -16,7 +16,6 @@ module.exports = function () {
 			debug: true
 		}, function (err, remote, connection) {
 			spin.stop()
-			delete spin
 
 			if (err) {
 				console.error(err)
