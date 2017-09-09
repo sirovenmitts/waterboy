@@ -108,7 +108,7 @@ function scheduleAlarms() {
 		const timer = later.setInterval(() => {
 			notifier.notify({
 				title: 'Drink up, dude!',
-				message: `It's ${alarm.asString}; time to have some water`
+				message: `🚰 It's ${alarm.asString}; time to have some water 🚰`
 			})
 		}, schedule)
 
